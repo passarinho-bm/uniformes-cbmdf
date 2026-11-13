@@ -1,0 +1,81 @@
+/* Metadados de cada uniforme, resumidos do regulamento (com páginas do PDF). */
+window.UNIFORMES = {
+  '1b': {
+    figuras: [{ src: 'assets/fotos/fig-lapela.jpg', cap: 'Modo correto de uso da arma do quadro na lapela (túnica, 30 mm) e na gola (passeio, 20 mm) — figura do regulamento, p. 151.' }],
+    codigo: '1º B', titulo: 'Túnica cinza-escuro', aba: 'Túnica Cinza', cor: '#454d59',
+    fotos: [{ src: 'assets/fotos/ref-1b.jpg', cap: 'Referência oficial — versões masculina e feminina (p. 15)', crop: 'c1b' }],
+    ficha: [['Aquisição', 'Pelos bombeiros militares'], ['Posse', 'Obrigatória para todos os bombeiros e bombeiras militares'], ['Uso', 'Solenidades oficiais, recepções de gala, reuniões ou cerimônias em que se exija passeio completo, casaca, fraque ou smoking (e longo aos civis), ou reunião social solene de caráter particular.']],
+    composicao: {
+      M: ['Quepe cinza-escuro (2.16)', 'Túnica cinza-escuro (2.5)', 'Platinas cinza-escuro (4.3 a 4.7)', 'Plaqueta dourada (3.3)', 'Camisa social branca (3.13)', 'Gravata vertical ou horizontal preta (3.9)', 'Calça cinza-escuro (2.6)', 'Cinto vermelho (2.13)', 'Meias sociais pretas (3.12)', 'Sapato masculino preto (2.23)'],
+      F: ['Quepe feminino cinza-escuro (2.16)', 'Túnica feminina cinza-escuro (2.5)', 'Platinas cinza-escuro (4.3 a 4.7)', 'Plaqueta dourada (3.3)', 'Camisa social branca (3.13)', 'Gravata feminina preta (3.9)', 'Calça, ou saia média/longa, cinza-escuro (2.12)', 'Cinto vermelho (2.13)', 'Meia-calça na cor da pele (3.39)', 'Sapato feminino preto (2.24)'],
+    },
+    espec: [
+      ['Gravata', 'Em solenidades oficiais e reuniões sociais que exijam passeio completo: gravata vertical preta (masc.) e saia média ou calça (fem.). Com casaca, fraque, smoking ou longo: gravata horizontal preta e saia longa cinza-escuro.', 'p. 16 (I, VI)'],
+      ['Saia', 'Em formaturas é obrigatório o uso da saia média cinza-escuro. A calça feminina é opcional e não pode ser usada quando o instrumento convocatório determinar a saia.', 'p. 16 (II, III)'],
+      ['Cabelo feminino', 'Médio ou longo preso por coque ou trança embutida, sem ultrapassar a linha superior da gola e compatível com o quepe.', 'p. 16 (IV)'],
+      ['Quepe', 'O uniforme pode ser usado sem quepe, a critério do Comandante-Geral.', 'p. 16 (V)'],
+      ['Sem túnica', 'Somente em deslocamento no interior de viatura/veículo particular ou no interior de OBM fora de formatura ou solenidade. Vedado em bailes e cerimônias de caráter ou representação militar.', 'p. 16 (VII, VIII)'],
+      ['Insígnias e distintivos', 'Arma do respectivo quadro/qualificação; distintivo de curso, de OBM e plaqueta dourada são obrigatórios.', 'p. 16 (IX)'],
+      ['Medalhas', 'Uso restrito ao 1º grupo, nas solenidades de maior formalidade (ex.: Dia do Bombeiro, 2 de julho, e Independência, 7 de setembro). Ordem de precedência, máx. 16 em até 4 fileiras de 4.', 'p. 170–172'],
+      ['Miniaturas', 'Só com traje de gala (casaca) ou rigor (smoking): até 5 alinhadas, sem medalhas nem barretas.', 'p. 175'],
+    ],
+  },
+  '2a': {
+    figuras: [{ src: 'assets/fotos/fig-lapela.jpg', cap: 'Modo correto de uso da arma do quadro: na gola do 2º A (20 mm) e na lapela da túnica (30 mm) — figura do regulamento, p. 151.' }],
+    codigo: '2º A', titulo: 'Passeio', aba: 'Segundo A', cor: '#c9a47f',
+    fotos: [{ src: 'assets/fotos/ref-2a.jpg', cap: 'Referência oficial — versões masculina e feminina (p. 33)', crop: 'c2a' }],
+    ficha: [['Aquisição', 'Pelos bombeiros militares'], ['Posse', 'Obrigatória para todos os bombeiros e bombeiras militares do CBMDF'], ['Uso', 'Atividades administrativas, apresentações individuais e coletivas, solenidades e atividades sociais em que se exijam, aos civis, os trajes passeio, esporte fino ou esporte.']],
+    composicao: {
+      M: ['Gorro sem pala azul-escuro (bibico) ou boina azul-escuro (2.17 e 2.18)', 'Camisa meia manga bege-escuro (2.10)', 'Plaqueta vermelha (3.3)', 'Platinas rígidas azul-escuro (oficiais, praças especiais e subtenentes)', 'Camiseta de malha vermelha (2.1)', 'Calça azul-escuro (2.11)', 'Cinto vermelho (2.13)', 'Meias sociais pretas (3.12)', 'Sapato masculino preto (2.23)'],
+      F: ['Gorro sem pala azul-escuro (bibico) ou boina azul-escuro', 'Camisa meia manga bege-escuro (2.10)', 'Plaqueta vermelha (3.3)', 'Platinas rígidas azul-escuro (oficiais, praças especiais e subtenentes)', 'Camiseta de malha vermelha (2.1)', 'Calça comprida ou saia média azul-escuro (2.12)', 'Cinto vermelho (2.13)', 'Meia-calça ou meia ¾ na cor da pele (3.39)', 'Sapato feminino preto (2.24)'],
+    },
+    espec: [
+      ['Meia ¾', 'Somente com a calça feminina. Com saia, usa-se meia-calça.', 'p. 34 (I)'],
+      ['Acessórios', 'Com autorização do Comandante-Geral (paradas, guardas de honra, desfiles): cachecol branco, coturno preto com bombacha, luvas de pelica pretas, braçal do CBMDF e coldre preto ou vermelho.', 'p. 34 (II)'],
+      ['Cobertura', 'Obrigatória em deslocamentos a pé; dispensável no interior das unidades e locais cobertos. Tropa: bibico (ou boina opcional). Comando Especializado e subordinadas: boina.', 'p. 34 (III)'],
+      ['Cabelo feminino', 'Médio ou longo preso por coque, rabo de cavalo ou trança, compatível com a cobertura; em solenidades pode ser determinado coque ou trança.', 'p. 34 (IV)'],
+      ['Blusa de frio', 'Posse facultativa, uso exclusivo com o 2º A, azul-escuro, com plaqueta vermelha, bandeira do DF (manga direita), emblema (manga esquerda) e insígnias metálicas.', 'p. 34 (V)'],
+      ['Condecorações', 'Somente barretas; é vedado o uso de medalhas neste uniforme.', 'p. 34 (VIII)'],
+      ['Capelães', 'Camiseta de malha vermelha meia manga com gola clerical.', 'p. 34 (VII)'],
+    ],
+  },
+  '3a': {
+    figuras: [{ src: 'assets/fotos/fig-gola.jpg', cap: 'Gola elevada (à esquerda) e gola dobrada (à direita) — figura do regulamento, p. 47. Em forma: dobrada em ambientes fechados e elevada em ambientes abertos.' }, { src: 'assets/fotos/fig-breves-3a.jpg', cap: 'Posições #1 a #4 dos brevês, manicacas e arma na carcela — figura do regulamento, p. 160.' }],
+    codigo: '3º A', titulo: 'Prontidão', aba: 'Prontidão', cor: '#ff6a13',
+    fotos: [{ src: 'assets/fotos/ref-3a-a.jpg', cap: 'Referência oficial — masculino (p. 43)', crop: 'c3' }, { src: 'assets/fotos/ref-3a-b.jpg', cap: 'Referência oficial — feminino (p. 43)', crop: 'c3' }],
+    ficha: [['Aquisição', 'Pelos bombeiros militares'], ['Posse', 'Obrigatória a todos os bombeiros e bombeiras militares'], ['Uso', 'Solenidades, representações, instruções, serviços operacionais, missões e expediente. É obrigatório durante o serviço para o qual o militar está escalado.']],
+    composicao: {
+      M: ['Gorro com pala laranja ou boina azul-escuro (2.14 e 2.18)', 'Blusa manga longa laranja (gandola), com luvas amovíveis ou divisas (2.2)', 'Camiseta de malha vermelha, meia-manga ou manga comprida (2.1)', 'Calça laranja (2.4)', 'Cinto vermelho (2.13)', 'Meias pretas de cano alto (3.11)', 'Coturnos pretos (2.22)'],
+      F: ['Gorro com pala laranja ou boina azul-escuro (2.14 e 2.18)', 'Blusa manga longa laranja (gandola), com luvas amovíveis ou divisas (2.2)', 'Camiseta de malha vermelha, meia-manga ou manga comprida (2.1)', 'Calça laranja (2.4)', 'Cinto vermelho (2.13)', 'Meias pretas de cano alto (3.11)', 'Coturnos pretos (2.22)'],
+    },
+    espec: [
+      ['Emprego', 'Em atividades administrativas, dentro da unidade, é facultado o uso sem a gandola. Na função de adjunto, guarda, sentinela, rondante e afins, e em missão operacional/atividade externa, o uniforme completo é obrigatório.', 'p. 44 (I)'],
+      ['Trânsito', 'Em veículo particular ou por aplicativo pode-se retirar o gorro e a gandola, recolocando-os ao desembarcar.', 'p. 44 (II)'],
+      ['Ajuste da calça', 'Barra ajustada por velcro na região tibial, acima do coturno. Não se usa a calça por fora do coturno, salvo campo, buscas em áreas remotas ou situações de proteção adicional, a critério do comandante.', 'p. 44–45 (VII)'],
+      ['Cobertura', 'Obrigatória em deslocamentos a pé; dispensável no interior das unidades, em veículo, em locais cobertos e no socorro (onde se usa o capacete).', 'p. 45 (VIII)'],
+      ['Manga e gola', 'A manga pode ser dobrada ou recolhida até o cotovelo (nunca em ações de socorro nem com camiseta manga comprida). A gola pode ser dobrada ou elevada; em forma, padronizar (dobrada em ambiente fechado, elevada em aberto).', 'p. 46 (XIII, XIV)'],
+      ['Motocicleta', 'Permitida a jaqueta de motociclista no deslocamento em motocicleta particular.', 'p. 45 (X)'],
+      ['Acessórios', 'Com autorização do Comandante-Geral: coturno com cadarço branco, suspensório, cinto N.A. vermelho ou tático preto, colete preto, braçal e coldre. Com espada: cinto N.A. vermelho, fiador, talim e luvas de pelica pretas.', 'p. 45–46 (XI, XV)'],
+      ['Japona e serviço operacional', 'Japona laranja de uso exclusivo com o 3º A. No serviço operacional, bermuda de malha preta por baixo.', 'p. 46 (XVI, XVII)'],
+      ['Gandoleta (opcional)', 'Variação usada por dentro da calça, com painéis em malha; mesma distribuição de insígnias e distintivos.', 'p. 49–51'],
+    ],
+  },
+  '4a': {
+    figuras: [{ src: 'assets/fotos/fig-meia.jpg', cap: 'Uso da meia com tênis: a meia de cano alto deve ser dobrada, bem ajustada à perna; é vedado usá-la frouxa ou totalmente estendida — figura do regulamento, p. 117.' }],
+    codigo: '4º A', titulo: 'TFM', aba: 'TFM', cor: '#c8141e',
+    fotos: [{ src: 'assets/fotos/ref-4a-b.jpg', cap: 'Referência oficial — masculino (p. 56)', crop: 'c4' }, { src: 'assets/fotos/ref-4a-a.jpg', cap: 'Referência oficial — feminino (p. 56)', crop: 'c4' }],
+    ficha: [['Aquisição', 'Pelos bombeiros militares'], ['Posse', 'Obrigatória a todos os bombeiros militares'], ['Uso', 'Uso interno nas OBMs, durante o serviço operacional e instruções técnico-profissionais; também por todos na prática de treinamento físico militar.']],
+    composicao: {
+      M: ['Camiseta de malha vermelha, meia-manga ou manga comprida (2.1)', 'Bermuda vermelha (2.20)', 'Bermuda de malha preta (3.6)', 'Meias pretas de cano médio (ou cano alto dobradas) (3.11)', 'Tênis preto (2.25)', 'Gorro com pala vermelho — opcional (2.15)'],
+      F: ['Camiseta de malha vermelha, meia-manga ou manga comprida (2.1)', 'Top preto (3.40)', 'Bermuda vermelha (2.20)', 'Bermuda de malha preta (3.6)', 'Meias pretas de cano médio (ou cano alto dobradas) (3.11)', 'Tênis preto (2.25)', 'Gorro com pala vermelho — opcional (2.15)'],
+    },
+    espec: [
+      ['Serviço operacional', 'Preconizado para os períodos aquartelados e como base sob os EPIs. O uso isolado é restrito ao interior da OBM, exceto: instruções técnico-profissionais, atividade física militar, áreas de reabilitação (SCI) e prevenção aquática.', 'p. 57 (I)'],
+      ['Atividades aquáticas', 'Podem-se somar sandálias pretas, sunga (masc.) ou maiô preto com bermuda preta/short embutido e touca (fem.). Em prevenção aquática a camiseta pode ser substituída por EPI.', 'p. 57 (II)'],
+      ['Trânsito', 'Permitido em viatura, veículo particular ou aplicativo. Vedado em transporte público, motocicleta, a pé em via pública e em estabelecimentos externos à OBM.', 'p. 57 (III)'],
+      ['Especializadas', 'Camisetas de Grupamentos Especializados podem ter brasão no peito (190 mm), e na manga longa a especialidade (esq.) e “INSTRUTOR” (dir.).', 'p. 57 (IV), 67–69'],
+      ['Abrigo', 'É admitido o abrigo do agasalho (2.19) por sobre o uniforme para proteção térmica.', 'p. 57 (V)'],
+      ['Camiseta', 'Usada por fora da bermuda vermelha. Inscrição “BOMBEIRO MILITAR DISTRITO FEDERAL” em silk screen branco nas costas.', 'p. 65'],
+    ],
+  },
+};

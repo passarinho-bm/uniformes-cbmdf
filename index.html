@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uniformes CBMDF 2026 — Simulador de insígnias</title>
+<meta name="description" content="Informe posto, quadro, cursos e medalhas e veja a disposição de insígnias, brevês e distintivos em cada uniforme do CBMDF, conforme o Regulamento de Uniformes 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M5 3h22v13c0 7-6 11-11 13C11 27 5 23 5 16z' fill='%23c8141e'/%3E%3Cpath d='M16 8l2 5.5h6l-4.8 3.6 1.8 5.7-5-3.5-5 3.5 1.8-5.7L8 13.5h6z' fill='%23f2c200'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css?v=32">
+</head>
+<body>
+<a class="skip" href="#painel">Ir para o painel</a>
+<header class="top">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 3h22v13c0 7-6 11-11 13C11 27 5 23 5 16z" fill="#c8141e" stroke="#e8e8e8" stroke-width="1.2"/><path d="M16 8l2 5.5h6l-4.8 3.6 1.8 5.7-5-3.5-5 3.5 1.8-5.7L8 13.5h6z" fill="#f2c200"/></svg>
+    <div>
+      <h1>Uniformes do CBMDF</h1>
+      <p>Simulador do Regulamento de Uniformes 2026 — insígnias, brevês, medalhas e distintivos</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button type="button" class="btn ghost" id="btn-ficha-toggle" aria-expanded="true" aria-controls="ficha">Ficha</button>
+    <button type="button" class="btn ghost" id="btn-print">Imprimir / PDF</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside id="ficha" class="ficha" aria-label="Ficha do militar">
+    <div class="ficha-head">
+      <h2>Ficha do militar</h2>
+      <div class="ficha-btns">
+        <button type="button" class="btn small" id="btn-exemplo">Exemplo</button>
+        <button type="button" class="btn small danger" id="btn-limpar">Limpar</button>
+      </div>
+    </div>
+    <p class="hint">Tudo é calculado no seu navegador e salvo apenas neste aparelho.</p>
+
+    <section class="bloco">
+      <h3>Identificação</h3>
+      <label class="fld"><span>Nome de guerra</span><input id="f-nome" type="text" maxlength="18" autocomplete="off" placeholder="Ex.: SILVA"></label>
+      <div class="fld"><span>Sexo <small>(muda a túnica e a plaqueta)</small></span>
+        <div class="seg" role="radiogroup" aria-label="Sexo">
+          <label><input type="radio" name="f-sexo" value="M"><span>Masculino</span></label>
+          <label><input type="radio" name="f-sexo" value="F"><span>Feminino</span></label>
+        </div>
+      </div>
+      <div class="row2">
+        <label class="fld"><span>Tipo sanguíneo</span><select id="f-sangue"></select></label>
+        <label class="fld"><span>Lotação (OBM)</span><input id="f-obm" list="dl-obm" type="text" maxlength="12" placeholder="Ex.: 1º GBM" autocomplete="off"></label>
+      </div>
+      <datalist id="dl-obm"></datalist>
+      <p class="msg" id="msg-obm" hidden></p>
+    </section>
+
+    <section class="bloco">
+      <h3>Posto e quadro</h3>
+      <label class="fld"><span>Posto ou graduação</span><select id="f-posto"></select></label>
+      <label class="fld"><span id="lbl-quadro">Quadro</span><select id="f-quadro"></select></label>
+      <label class="fld" id="wrap-funcao"><span>Função de comando <small>(aplique — só oficiais)</small></span><select id="f-funcao"></select></label>
+    </section>
+
+    <section class="bloco">
+      <h3>Curso de carreira</h3>
+      <p class="hint">Distintivo circular do bolso direito (1º B e 2º A).</p>
+      <select id="f-carreira" aria-label="Curso de carreira"></select>
+      <input id="f-carreira-sigla" type="text" maxlength="6" placeholder="Sigla (ex.: CAO)" hidden aria-label="Sigla do curso de carreira">
+    </section>
+
+    <section class="bloco">
+      <h3>Cursos de especialização</h3>
+      <p class="hint">Ordene por prioridade: só cabem 4 brevês. Cursos <b>externos</b> só vão ao peito esquerdo.</p>
+      <div class="addrow"><select id="f-curso-add" aria-label="Adicionar curso"></select><button type="button" class="btn small" id="btn-curso-add">Adicionar</button></div>
+      <div class="addrow"><input id="f-curso-custom" type="text" maxlength="12" placeholder="Outro curso (sigla)" aria-label="Sigla de outro curso"><button type="button" class="btn small" id="btn-curso-custom">Adicionar</button></div>
+      <ol class="lista" id="lista-cursos" aria-label="Cursos adicionados"></ol>
+      <details class="mini">
+        <summary>Manicacas do 3º A (braços)</summary>
+        <label class="fld"><span>Braço direito — funcional</span><select id="f-manD"></select></label>
+        <label class="fld"><span>Braço esquerdo — especialização</span><select id="f-manE"></select></label>
+      </details>
+    </section>
+
+    <section class="bloco">
+      <h3>Condecorações</h3>
+      <p class="hint">Informe só a quantidade; o app distribui fitas de cores variadas. Só se usam após publicação em Boletim Geral.</p>
+      <label class="fld"><span>Quantidade de condecorações <small>(0 a 32)</small></span><input id="f-ncond" type="number" min="0" max="32" step="1" inputmode="numeric" value="0"></label>
+      <div class="seg full" role="radiogroup" aria-label="Condecorações na túnica">
+        <label><input type="radio" name="f-modo" value="medalhas"><span>Túnica com medalhas</span></label>
+        <label><input type="radio" name="f-modo" value="barretas"><span>Túnica com barretas</span></label>
+      </div>
+    </section>
+  </aside>
+
+  <main id="painel" class="painel" tabindex="-1">
+    <div class="tabs" role="tablist" aria-label="Uniformes"></div>
+    <div class="tabpanels"></div>
+    <footer class="rodape">
+      <p>Fonte: <i>Regulamento de Uniformes do CBMDF 2026</i> (anexo), conforme PDF fornecido. As peças são as fotos oficiais do regulamento, retocadas (legendas e insígnias gravadas removidas, mangas reconstruídas e espelhadas). Platinas, luvas, armas, brevês, bandeira, emblema, plaquetas, apliques, distintivo de OBM e coberturas são recortes das figuras do próprio regulamento, colocados nas posições dos diagramas. Divisas de manga, manicacas, medalhas e barretas são desenhadas. Em caso de dúvida, vale o texto oficial e as notas técnicas do Comandante-Geral.</p>
+    </footer>
+  </main>
+</div>
+
+<script src="js/sprites.js?v=32"></script>
+<script src="js/data.js?v=32"></script>
+<script src="js/uniformes.js?v=32"></script>
+<script src="js/draw.js?v=32"></script>
+<script src="js/app.js?v=32"></script>
+</body>
+</html>
