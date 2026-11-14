@@ -134,8 +134,8 @@ details.mini summary { cursor: pointer; color: var(--muted); font-weight: 600; m
 .card.nv-vedado { border-left-color: var(--n-vedado); }
 .card.nv-alerta { border-left-color: var(--n-alerta); background: color-mix(in srgb, var(--n-alerta) 9%, var(--bg)); }
 .card.hl, .card:focus-visible { box-shadow: 0 0 0 2px #f2b705; }
-.card.flash { animation: flash 1.1s; }
-@keyframes flash { 0%, 60% { box-shadow: 0 0 0 3px #f2b705; } 100% { box-shadow: 0 0 0 0 #f2b70500; } }
+.card.flash { animation: flash 3s linear; }
+@keyframes flash { 0%, 33.3%, 66.6%, 100% { box-shadow: 0 0 0 3px #f2b705; background: #fff3c4; } 16.6%, 50%, 83.3% { box-shadow: 0 0 0 0 #f2b70500; background: var(--bg); } }
 .card .n { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--red); color: #fff; font-weight: 700; font-size: 12px; display: grid; place-items: center; margin-top: 1px; }
 .card .n.sem { background: transparent; border: 1.5px dashed var(--line); }
 .card .cb { min-width: 0; }

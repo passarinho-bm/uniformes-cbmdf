@@ -446,7 +446,7 @@ window.Draw = (function () {
   function finalizar(c, svgBody, vb, extraDefs) {
     let n = 0, marks = '';
     c.items.forEach((it) => {
-      if (it.at) { it.n = ++n; marks += `<g class="mk" data-hs="${it.key}" transform="translate(${f1(it.at[0])},${f1(it.at[1])})"><circle r="7.6"/><text y=".5">${it.n}</text></g>`; }
+      if (it.at) { it.n = ++n; }
     });
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb.geral}" role="img" aria-label="Ilustração do uniforme com as insígnias do militar">${defs()}${svgBody}<g class="marks">${marks}</g></svg>`;
     return { svg, items: c.items, vb };
@@ -554,8 +554,9 @@ window.Draw = (function () {
       else g += hs('posto', platina(c, 152, 68, -16, COR.cinza, 'd') + platina(c, 368, 68, 16, COR.cinza, 'e'), c.p.nome);
       add(c, { key: 'posto', nivel: 'obrig', titulo: 'Insígnia de posto: platinas rígidas', texto: c.fn.id ? `Platina especial de ${c.fn.nome} (cinza-escuro, bordas e ramos dourados), nos dois ombros.` : `${c.p.nome}: platinas rígidas cinza-escuro de 130 × 60 mm, com botão dourado na ponta${c.eOf ? ' e lâmina ' + (c.superior ? 'dourada' : 'prateada') + ' nas bordas' : ''}; ${c.p.stars ? 'estrelas metálicas de 25 mm espaçadas 10 mm' : c.p.cadete ? 'insígnia base do CBMDF sobre ' + c.p.cadete + ' barreta(s)' : 'triângulo equilátero dourado vazado'}.`, pag: 'p. 139–147', at: mkAt(G.plat[0], G.mk.plat[0], G.mk.plat[1]) });
     } else {
-      g += hs('posto', G.div.map((d) => pl(d, divisas(c, 0, 0, 'ouro', foto ? '#2c303f' : null))).join(''), c.p.nome);
-      add(c, { key: 'posto', nivel: 'obrig', titulo: 'Divisas nas duas mangas', texto: `${c.p.nome}: divisas bordadas em amarelo-ouro sobre base pentagonal de 70 mm em tecido cinza-escuro, a 130 mm da costura do ombro, em ambas as mangas. A arma da sua qualificação fica centrada sobre a divisa superior.`, pag: 'p. 148–149', at: mkAt(G.div[0], 0, G.mk.div[1]) });
+      if (!c.p.divisas) add(c, { key: 'posto', nivel: 'info', titulo: 'Sem divisas nas mangas', texto: `${c.p.nome}: não usa divisas na túnica; as mangas levam apenas a bandeira do DF (direita) e o emblema do CBMDF (esquerda).`, pag: 'p. 148–149', at: null });
+      else g += hs('posto', G.div.map((d) => pl(d, divisas(c, 0, 0, 'ouro', foto ? '#2c303f' : null))).join(''), c.p.nome);
+      if (c.p.divisas) add(c, { key: 'posto', nivel: 'obrig', titulo: 'Divisas nas duas mangas', texto: `${c.p.nome}: divisas bordadas em amarelo-ouro sobre base pentagonal de 70 mm em tecido cinza-escuro, a 130 mm da costura do ombro, em ambas as mangas. A arma da sua qualificação fica centrada sobre a divisa superior.`, pag: 'p. 148–149', at: mkAt(G.div[0], 0, G.mk.div[1]) });
     }
 
     // ---- arma de quadro (lapelas)

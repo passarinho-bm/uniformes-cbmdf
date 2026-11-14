@@ -142,7 +142,6 @@
     $('#lista-cursos').addEventListener('change', (e) => { const cb = e.target.closest('input[data-k]'); if (!cb) return; st.cursos[+cb.closest('li').dataset.i][cb.dataset.k] = cb.checked; mudou(); });
     $('#btn-exemplo').addEventListener('click', () => { st = normalizar(clone(EXEMPLO)); refletirFicha(); mudou(); });
     $('#btn-limpar').addEventListener('click', () => { if (confirm('Limpar todos os dados da ficha?')) { st = normalizar(clone(VAZIO)); refletirFicha(); mudou(); } });
-    $('#btn-print').addEventListener('click', () => window.print());
     const bt = $('#btn-ficha-toggle');
     bt.addEventListener('click', () => { const f = $('#ficha'); const aberto = f.classList.toggle('fechada') === false; bt.setAttribute('aria-expanded', String(aberto)); });
     if (window.matchMedia('(max-width: 900px)').matches) { $('#ficha').classList.add('fechada'); bt.setAttribute('aria-expanded', 'false'); }
@@ -162,10 +161,9 @@
 <dl class="ficha-uni">${u.ficha.map((f) => `<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join('')}</dl></div>
 <div class="uni-grid">
  <div class="box stage">
-  <div class="stage-bar"><div class="views" role="group" aria-label="Enquadramento">${VIEWS.map((v) => `<button type="button" data-view="${v[0]}" aria-pressed="${v[0] === 'geral'}">${v[1]}</button>`).join('')}</div>
-   <div class="stage-opts"><label class="tgl"><input type="checkbox" class="tg-num" checked><span>Numeração</span></label></div></div>
+  <div class="stage-bar"><div class="views" role="group" aria-label="Enquadramento">${VIEWS.map((v) => `<button type="button" data-view="${v[0]}" aria-pressed="${v[0] === 'geral'}">${v[1]}</button>`).join('')}</div></div>
   <div class="svgwrap" aria-live="polite"></div>
-  <p class="stage-note">Passe o mouse num número ou cartão para destacar; clique num cartão para aproximar a região.</p>
+  <p class="stage-note">Passe o mouse numa peça ou cartão para destacar; clique numa peça para localizar a regra (ela pisca por 3 s); clique num cartão para aproximar a região.</p>
  </div>
  <div class="box rules">
   <div class="rules-head"><h3>Regras para você <span class="cont"></span></h3>
@@ -192,7 +190,6 @@ ${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — 
     const p = $('#p-' + k);
     $$('[data-view]', p).forEach((b) => b.addEventListener('click', () => setView(k, b.dataset.view)));
     $$('[data-f]', p).forEach((b) => b.addEventListener('click', () => { filtros[k] = b.dataset.f; $$('[data-f]', p).forEach((x) => x.setAttribute('aria-pressed', String(x === b))); pintarCards(k); }));
-    $('.tg-num', p).addEventListener('change', (e) => $('.svgwrap', p).classList.toggle('nonum', !e.target.checked));
     $$('input[name=manga-' + k + ']', p).forEach((r) => r.addEventListener('change', () => { st.tfmManga = r.value; mudou(); }));
     const alvo = (e) => e.target.closest('[data-hs]');
     p.addEventListener('mouseover', (e) => { const el = alvo(e); destacar(p, el ? el.dataset.hs : null); });
@@ -203,7 +200,19 @@ ${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — 
       const el = alvo(e); if (!el) return;
       const key = el.dataset.hs;
       if (el.closest('.cards')) { setView(k, viewPara(key)); }
-      else { const c = $('.cards [data-hs="' + key + '"]', p); if (c) { c.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' }); c.classList.add('flash'); setTimeout(() => c.classList.remove('flash'), 1200); } }
+      else {
+        let cs = $$('.cards [data-hs="' + key + '"]', p);
+        if (!cs.length && filtros[k] !== 'todos') {
+          filtros[k] = 'todos';
+          $$('[data-f]', p).forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.f === 'todos')));
+          pintarCards(k);
+          cs = $$('.cards [data-hs="' + key + '"]', p);
+        }
+        if (cs.length) {
+          cs[0].scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+          cs.forEach((c) => { c.classList.remove('flash'); void c.offsetWidth; c.classList.add('flash'); clearTimeout(c._ft); c._ft = setTimeout(() => c.classList.remove('flash'), 3000); });
+        }
+      }
     });
   }
   function destacar(p, key) {
@@ -258,7 +267,7 @@ ${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — 
     const vis = lista.filter((it) => f === 'todos' || it.nivel === f);
     $('.cont', p).textContent = `(${vis.length})`;
     $('.cards', p).innerHTML = vis.map((it) => `<li class="card nv-${it.nivel}" data-hs="${it.key}" tabindex="0">
-<span class="n ${it.n ? '' : 'sem'}">${it.n || ''}</span><div class="cb"><div class="ttl"><span>${esc(it.titulo)}</span><em class="tag">${NIVEIS[it.nivel][0]}</em></div><p>${esc(it.texto)}</p><span class="pag">${esc(it.pag || '')}</span></div></li>`).join('') || '<li class="vazio">Nenhuma regra neste filtro.</li>';
+<div class="cb"><div class="ttl"><span>${esc(it.titulo)}</span><em class="tag">${NIVEIS[it.nivel][0]}</em></div><p>${esc(it.texto)}</p><span class="pag">${esc(it.pag || '')}</span></div></li>`).join('') || '<li class="vazio">Nenhuma regra neste filtro.</li>';
   }
 
   function resumoTexto() {
