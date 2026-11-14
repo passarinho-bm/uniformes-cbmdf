@@ -161,9 +161,10 @@
 <dl class="ficha-uni">${u.ficha.map((f) => `<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join('')}</dl></div>
 <div class="uni-grid">
  <div class="box stage">
-  <div class="stage-bar"><div class="views" role="group" aria-label="Enquadramento">${VIEWS.map((v) => `<button type="button" data-view="${v[0]}" aria-pressed="${v[0] === 'geral'}">${v[1]}</button>`).join('')}</div></div>
+  <div class="stage-bar"><div class="views" role="group" aria-label="Enquadramento">${VIEWS.map((v) => `<button type="button" data-view="${v[0]}" aria-pressed="${v[0] === 'geral'}">${v[1]}</button>`).join('')}</div>
+   <div class="zoom-ctl" role="group" aria-label="Zoom"><button type="button" data-zoom="out" title="Afastar" aria-label="Afastar">−</button><button type="button" data-zoom="in" title="Aproximar" aria-label="Aproximar">+</button><button type="button" data-zoom="reset" title="Restaurar enquadramento" aria-label="Restaurar enquadramento">⟲</button></div></div>
   <div class="svgwrap" aria-live="polite"></div>
-  <p class="stage-note">Passe o mouse numa peça ou cartão para destacar; clique numa peça para localizar a regra (ela pisca por 3 s); clique num cartão para aproximar a região.</p>
+  <p class="stage-note">Passe o mouse numa peça ou cartão para destacar; clique numa peça para localizar a regra (ela pisca por 3 s). Role o mouse sobre a imagem para aproximar, arraste para mover e dê duplo clique para restaurar.</p>
  </div>
  <div class="box rules">
   <div class="rules-head"><h3>Regras para você <span class="cont"></span></h3>
@@ -191,6 +192,7 @@ ${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — 
     $$('[data-view]', p).forEach((b) => b.addEventListener('click', () => setView(k, b.dataset.view)));
     $$('[data-f]', p).forEach((b) => b.addEventListener('click', () => { filtros[k] = b.dataset.f; $$('[data-f]', p).forEach((x) => x.setAttribute('aria-pressed', String(x === b))); pintarCards(k); }));
     $$('input[name=manga-' + k + ']', p).forEach((r) => r.addEventListener('change', () => { st.tfmManga = r.value; mudou(); }));
+    ligarZoom(k, p);
     const alvo = (e) => e.target.closest('[data-hs]');
     p.addEventListener('mouseover', (e) => { const el = alvo(e); destacar(p, el ? el.dataset.hs : null); });
     p.addEventListener('mouseout', (e) => { if (!e.relatedTarget || !p.contains(e.relatedTarget) || !e.relatedTarget.closest('[data-hs]')) destacar(p, null); });
@@ -215,6 +217,73 @@ ${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — 
       }
     });
   }
+  // zoom (roda do mouse / pinça / botões) e pan (arrastar) direto no viewBox do SVG
+  function ligarZoom(k, p) {
+    const wrap = $('.svgwrap', p);
+    const getSvg = () => $('svg', wrap);
+    const vbOf = (svg) => svg.getAttribute('viewBox').split(' ').map(Number);
+    const baseW = () => (pronto[k] ? pronto[k].vb.geral : '0 0 760 650').split(' ').map(Number)[2];
+    const setVB = (svg, v) => {
+      svg.setAttribute('viewBox', v.map((n) => n.toFixed(2)).join(' '));
+      const ref = pronto[k] ? pronto[k].vb[views[k]].split(' ').map(Number)[2] : v[2];
+      wrap.classList.toggle('zoomed', Math.abs(v[2] - ref) > ref * 0.02);
+    };
+    const pt = (svg, x, y) => { const m = svg.getScreenCTM(); return m ? new DOMPoint(x, y).matrixTransform(m.inverse()) : null; };
+    function zoomEm(svg, cx, cy, f) {
+      if (svg._raf) cancelAnimationFrame(svg._raf);
+      const v = vbOf(svg), bw = baseW();
+      const w = Math.max(bw * 0.06, Math.min(bw * 1.25, v[2] / f)), s = w / v[2];
+      setVB(svg, [cx - (cx - v[0]) * s, cy - (cy - v[1]) * s, w, v[3] * s]);
+    }
+    wrap.addEventListener('wheel', (e) => {
+      const svg = getSvg(); if (!svg) return;
+      e.preventDefault();
+      const q = pt(svg, e.clientX, e.clientY); if (q) zoomEm(svg, q.x, q.y, Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0016)));
+    }, { passive: false });
+
+    const ptrs = new Map();
+    let moved = false, start = null, pinchD = 0;
+    wrap.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      moved = false; start = { x: e.clientX, y: e.clientY };
+      if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinchD = Math.hypot(a.x - b.x, a.y - b.y); }
+    });
+    wrap.addEventListener('pointermove', (e) => {
+      const last = ptrs.get(e.pointerId); if (!last) return;
+      const svg = getSvg(); if (!svg) return;
+      if (svg._raf) cancelAnimationFrame(svg._raf);
+      const cur = { x: e.clientX, y: e.clientY };
+      if (ptrs.size === 2) {
+        ptrs.set(e.pointerId, cur);
+        const [a, b] = [...ptrs.values()], d = Math.hypot(a.x - b.x, a.y - b.y);
+        const q = pt(svg, (a.x + b.x) / 2, (a.y + b.y) / 2);
+        if (q && pinchD) zoomEm(svg, q.x, q.y, d / pinchD);
+        pinchD = d; moved = true; return;
+      }
+      if (!moved) {
+        if (Math.hypot(cur.x - start.x, cur.y - start.y) < 5) return;
+        moved = true; wrap.classList.add('panning');
+        try { wrap.setPointerCapture(e.pointerId); } catch (_) { /* ignora */ }
+      }
+      const m = svg.getScreenCTM(); if (!m) return;
+      const v = vbOf(svg);
+      setVB(svg, [v[0] - (cur.x - last.x) / m.a, v[1] - (cur.y - last.y) / m.d, v[2], v[3]]);
+      ptrs.set(e.pointerId, cur);
+    });
+    const fim = (e) => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinchD = 0; if (!ptrs.size) wrap.classList.remove('panning'); };
+    wrap.addEventListener('pointerup', fim);
+    wrap.addEventListener('pointercancel', fim);
+    // um arraste não deve contar como clique numa peça
+    wrap.addEventListener('click', (e) => { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+    wrap.addEventListener('dblclick', () => setView(k, views[k]));
+    $$('[data-zoom]', p).forEach((b) => b.addEventListener('click', () => {
+      const svg = getSvg(); if (!svg) return;
+      if (b.dataset.zoom === 'reset') { setView(k, views[k]); return; }
+      const v = vbOf(svg);
+      zoomEm(svg, v[0] + v[2] / 2, v[1] + v[3] / 2, b.dataset.zoom === 'in' ? 1.4 : 1 / 1.4);
+    }));
+  }
   function destacar(p, key) {
     $$('.hl', p).forEach((x) => x.classList.remove('hl'));
     p.classList.toggle('focus', !!key);
@@ -232,6 +301,7 @@ ${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — 
     views[k] = v;
     const p = $('#p-' + k);
     $$('[data-view]', p).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+    $('.svgwrap', p).classList.remove('zoomed');
     const svg = $('svg', p);
     if (svg && pronto[k]) tween(svg, pronto[k].vb[v]);
   }
@@ -283,6 +353,7 @@ ${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — 
     const wrap = $('.svgwrap', p);
     wrap.innerHTML = res.svg;
     wrap.style.aspectRatio = res.aspect || '760 / 650';
+    wrap.classList.remove('zoomed');
     $('svg', wrap).setAttribute('viewBox', res.vb[views[k]]);
     $('.resumo', p).textContent = resumoTexto();
     $$('input[name=manga-' + k + ']', p).forEach((r) => { r.checked = r.value === st.tfmManga; });

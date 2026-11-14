@@ -112,6 +112,12 @@ details.mini summary { cursor: pointer; color: var(--muted); font-weight: 600; m
 .stage-opts { display: flex; gap: 10px; align-items: center; }
 .svgwrap { background: radial-gradient(circle at 40% 30%, var(--stage), var(--bg)); border: 1px solid var(--line); border-radius: 10px; aspect-ratio: 760 / 650; overflow: hidden; }
 .svgwrap svg { width: 100%; height: 100%; display: block; }
+.svgwrap { cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.svgwrap.zoomed { touch-action: none; }
+.svgwrap.panning, .svgwrap.panning * { cursor: grabbing !important; }
+.zoom-ctl { display: flex; gap: 4px; }
+.zoom-ctl button { width: 30px; height: 28px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; font-size: 16px; line-height: 1; cursor: pointer; font-weight: 700; color: var(--muted); }
+.zoom-ctl button:hover { color: var(--ink); border-color: var(--muted); }
 .stage-note { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
 .hs { cursor: pointer; transition: opacity .15s; }
 .focus .hs:not(.hl) { opacity: .35; }
@@ -177,7 +183,7 @@ details.mini summary { cursor: pointer; color: var(--muted); font-weight: 600; m
   .top { padding: 10px 14px; }
 }
 @media print {
-  .top, .ficha, .tabs, .views, .stage-opts, .chips, .skip, .stage-note { display: none !important; }
+  .top, .ficha, .tabs, .views, .zoom-ctl, .stage-opts, .chips, .skip, .stage-note { display: none !important; }
   body { background: #fff; color: #000; }
   .layout { display: block; padding: 0; }
   .box, .ficha-uni div { box-shadow: none; break-inside: avoid; }
