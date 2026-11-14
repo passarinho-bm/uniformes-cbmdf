@@ -145,8 +145,8 @@ window.Draw = (function () {
     if (!nCh) s += `<text x="${cx}" y="${top + 14}" text-anchor="middle" font-size="6" fill="#fff" font-family="Arial">sem divisa</text>`;
     // arma da qualificação centrada sobre a divisa superior
     if (nCh) {
-      const filt = modo === 'ouro' ? '' : 'filter:brightness(0)';
-      s += image('arma-' + c.q.sprite, cx, top + 11, 13, 17, filt);
+      const filt = modo === 'ouro' ? 'filter:drop-shadow(0 0 1px #000) drop-shadow(0 0 1.4px #000)' : 'filter:brightness(0)';
+      s += image('arma-' + c.q.sprite, cx, top + 11.5, 15, 19, filt);
     }
     return s;
   }
@@ -483,7 +483,7 @@ window.Draw = (function () {
       foto: true, w: 1200, h: 916, aspect: '1500 / 916',
       plat: [{ x: 411, y: 98, r: 69, k: KF }, { x: 785, y: 98, r: -69, k: KF }],
       div: [{ x: 248, y: 271, r: 33, k: KF * 0.9 }, { x: 948, y: 271, r: -33, k: KF * 0.9 }],
-      arma: [{ x: 503, y: 152, k: KF }, { x: 693, y: 152, k: KF }],
+      arma: [{ x: 517, y: 142, k: KF }, { x: 682, y: 147, k: KF }],
       plq: { x: 478, y: 311, k: KF }, car: { x: 476, y: 396, k: KF * 0.95 }, obm: { x: 719, y: 351, k: KF * 0.85 },
       bp: { 1: { x: 477, y: 273, k: KF }, 2: { x: 445, y: 226, k: KF }, 3: { x: 720, y: 273, k: KF }, 4: { x: 749, y: 228, k: KF } },
       ap: { x: 410, y: 182, k: KF }, bar: { x: 720, y: 298, k: KF }, med: { x: 720, y: 344, k: KF * 0.9 }, com: { x: 598, y: 28, k: KF * 0.9 },
@@ -559,8 +559,8 @@ window.Draw = (function () {
       if (c.p.divisas) add(c, { key: 'posto', nivel: 'obrig', titulo: 'Divisas nas duas mangas', texto: `${c.p.nome}: divisas bordadas em amarelo-ouro sobre base pentagonal de 70 mm em tecido cinza-escuro, a 130 mm da costura do ombro, em ambas as mangas. A arma da sua qualificação fica centrada sobre a divisa superior.`, pag: 'p. 148–149', at: mkAt(G.div[0], 0, G.mk.div[1]) });
     }
 
-    // ---- arma de quadro (lapelas)
-    if (c.plat) {
+    // ---- arma de quadro/qualificação (lapelas) — todos os militares (p.16, IX)
+    {
       g += hs('arma', G.arma.map((a, i) => pl(a, armaMetal(c, 0, 0, 21, i === 0 ? 45 : -45))).join(''), c.q.nome);
       add(c, { key: 'arma', nivel: 'obrig', titulo: 'Arma do quadro/qualificação nas lapelas', texto: `${c.q.nome}: arma dourada de 30 mm, centralizada na largura da lapela e a 10 mm da base da gola superior, nos dois lados, inclinada cerca de 45° com a base voltada para fora (para a base da lapela). Só a arma do seu quadro; é vedada arma de outro quadro. Na camisa branca de manga comprida não se usa arma.`, pag: 'p. 16, 18, 150–152', at: mkAt(G.arma[0], 0, G.mk.arma[1] / 1.0) });
     }
