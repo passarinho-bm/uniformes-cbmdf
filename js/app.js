@@ -96,7 +96,7 @@
   }
   function validarObm() {
     const v = (st.obm || '').trim();
-    const ok = !v || D.obms.includes(v) || /^\d{1,2}º (GBM|ESAV)$/.test(v);
+    const ok = !v || D.obms.includes(v);
     const m = $('#msg-obm');
     m.hidden = ok;
     m.textContent = ok ? '' : 'Sigla fora da tabela de lotação (item 3.2, p. 106–108). O regulamento só admite as siglas listadas.';
@@ -121,7 +121,7 @@
     $$('input[name=f-sexo]').forEach((r) => r.addEventListener('change', () => { st.sexo = r.value; mudou(); }));
     $$('input[name=f-modo]').forEach((r) => r.addEventListener('change', () => { st.modo = r.value; mudou(); }));
     $('#f-sangue').addEventListener('change', (e) => { st.sangue = e.target.value; mudou(); });
-    $('#f-obm').addEventListener('input', (e) => { st.obm = e.target.value.toUpperCase().replace('º GBM', 'º GBM'); validarObm(); mudou(); });
+    $('#f-obm').addEventListener('input', (e) => { st.obm = e.target.value.toUpperCase(); validarObm(); mudou(); });
     $('#f-ncond').addEventListener('input', (e) => { st.nCond = Math.max(0, Math.min(32, parseInt(e.target.value, 10) || 0)); st.medalhas = gerarCondecoracoes(st.nCond); mudou(); });
     $('#f-ncond').addEventListener('change', (e) => { e.target.value = st.nCond; });
     $('#f-posto').addEventListener('change', (e) => { st.posto = e.target.value; atualizarQuadro(); mudou(); });

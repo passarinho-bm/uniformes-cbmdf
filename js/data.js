@@ -83,7 +83,8 @@ window.CBMDF = (function () {
     'CMDP II', 'COCB', 'COESP', 'COGED', 'COMAP', 'COMAV', 'COMOP', 'COPAC', 'CTO', 'CTROL', 'DEALF', 'DEPCT', 'DERHU', 'DESEG',
     'DICOA', 'DIEAP', 'DIGEP', 'DIMAT', 'DINAP', 'DINVI', 'DIOFI', 'DIREN', 'DIREP', 'DISAU', 'DITIC', 'DIVIS', 'EMG', 'GABCG',
     'GACOP', 'GAEPH', 'GBMOT', 'GBS', 'GPCIU', 'GPCIV', 'GPRAM', 'NCUST', 'OUVID', 'PODON', 'POMED', 'SUBCG', 'SUCOP'];
-  for (let i = 1; i <= 30; i++) obms.push(i + 'º GBM');
+  // GBMs existentes (a tabela diz só "1º GBM a XXº GBM"; lista informada pelo usuário em 14/11/2026)
+  [1, 2, 3, 6, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 21, 22, 25, 34, 36, 37, 41, 45].forEach((n) => obms.push(n + 'º GBM'));
   for (let i = 1; i <= 3; i++) obms.push(i + 'º ESAV');
   ['COMAR I', 'COMAR II', 'COMAR III', 'COMAR IV'].forEach((s) => obms.push(s));
 
