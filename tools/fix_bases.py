@@ -83,7 +83,7 @@ def fix(name, axis, fabric, add=(), cut=(), smooth=(), seed=1):
 
 # ---- túnica masculina (1200x916, eixo 598)
 T_SMOOTH = [(690, 245, 28), [(705, 98), (872, 132), (856, 178), (716, 152)], [(1072, 358), (1118, 358), (1118, 394), (1072, 394)]]
-for n in ('tunica-m-noplat', 'tunica-m-plat', 'tunica-m-plat-prata'):
+for n in ('tunica-m-noplat', 'tunica-m-plat'):
     fix(n, 598, 'navy', add=[[(1040, 335), (1048, 341), (1093, 398), (1094, 412), (1060, 412)]], cut=[[(1049, 339), (1095, 397), (1140, 397), (1140, 339)]], smooth=T_SMOOTH[:1] + T_SMOOTH[2:] if 'noplat' not in n else T_SMOOTH)
 
 # ---- túnica feminina (1119x950, eixo 559)
@@ -91,13 +91,13 @@ F_ADD = [[(860, 115), (975, 270), (1012, 440), (1108, 845), (1100, 860), (968, 8
 F_CUT = [[(862, 110), (1119, 110), (1119, 843), (1110, 843), (1014, 438), (977, 268)],
          [(840, 478), (870, 552), (966, 886), (895, 886), (827, 552), (832, 478)]]
 F_SMOOTH = [[(798, 392), (862, 392), (862, 482), (798, 482)], (690, 152, 9), (825, 145, 9), [(702, 125), (860, 118), (880, 176), (702, 170)]]
-for n in ('tunica-f-noplat', 'tunica-f-plat', 'tunica-f-plat-prata'):
+for n in ('tunica-f-noplat', 'tunica-f-plat'):
     fix(n, 559, 'navy', add=F_ADD, cut=F_CUT, smooth=F_SMOOTH if 'noplat' in n else F_SMOOTH[:3])
 
 # ---- gandola (1030x800, eixo 507)
 G_ADD = [[(735, 120), (950, 435), (1005, 640), (1003, 662), (860, 668), (845, 480), (745, 335)], [(726, 368), (745, 368), (745, 442), (726, 442)]]
 G_CUT = [[(737, 116), (1030, 116), (1030, 638), (1008, 638), (953, 432)]]
 G_SMOOTH = [[(588, 92), (737, 118), (806, 222), (722, 262), (598, 202)], (512, 270, 14), (627, 243, 12), (735, 212, 14), (507, 235, 10), (836, 310, 22), (580, 92, 18)]
-for n in ('gandola-noplat', 'gandola-plat'):
+for n in ('gandola-noplat',):
     fix(n, 507, 'orange', add=G_ADD, cut=G_CUT, smooth=G_SMOOTH)
 
