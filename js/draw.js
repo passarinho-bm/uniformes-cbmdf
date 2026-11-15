@@ -809,10 +809,10 @@ window.Draw = (function () {
   const KP = 1.34;
   const GEO_P = {
     w: 1030, h: 800, aspect: '1330 / 800',
-    luva: [{ x: 390, y: 90, r: 70, k: KP }, { x: 625, y: 90, r: -70, k: KP }],
-    arma: { x: 507, y: 242, k: KP }, // base da arma na mesma linha da base dos cadarços
-    cadI: { x: 413, y: 249, k: KP }, cadL: { x: 601, y: 249, k: KP },
-    bp: { 1: { x: 412, y: 207, k: KP }, 2: { x: 387, y: 160, k: KP }, 3: { x: 602, y: 207, k: KP }, 4: { x: 637, y: 160, k: KP } },
+    luva: [{ x: 360, y: 125, r: 72, k: KP }, { x: 659, y: 125, r: -72, k: KP }],
+    arma: { x: 507, y: 244, k: KP }, // base da arma na mesma linha da base dos cadarços
+    cadI: { x: 416, y: 251, k: KP }, cadL: { x: 601, y: 251, k: KP },
+    bp: { 1: { x: 412, y: 214, k: KP }, 2: { x: 387, y: 170, k: KP }, 3: { x: 610, y: 214, k: KP }, 4: { x: 637, y: 170, k: KP } },
     manD: { x: 250, y: 180, r: 34, k: 0.8 }, manE: { x: 754, y: 180, r: -34, k: 0.8 },
     band: { x: 235, y: 216, r: 34, k: KP * 0.9 }, emb: { x: 776, y: 212, r: -34, k: KP * 0.9 },
     div: [{ x: 190, y: 320, r: 34, k: KP * 0.8 }, { x: 824, y: 320, r: -34, k: KP * 0.8 }],
