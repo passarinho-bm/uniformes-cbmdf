@@ -135,7 +135,9 @@ window.Draw = (function () {
     const nCh = d.length;
     const Hh = nCh ? h + pitch * (nCh - 1) + t + 8 : 22;
     const baseFill = baseOverride || (modo === 'ouro' ? COR.cinzaEsc : COR.laranja);
-    let s = `<path d="M${cx - W / 2},${top} L${cx + W / 2},${top} L${cx + W / 2},${top + Hh} L${cx},${top + Hh + 9} L${cx - W / 2},${top + Hh} Z" fill="${baseFill}" stroke="${modo === 'ouro' ? '#6a7380' : '#a53d00'}" stroke-width="1"/>`;
+    // base pentagonal: a ponta inferior segue o mesmo ângulo do "V" mais baixo, a uma pequena folga (m) abaixo dele
+    const m = 2.5, yBico = top + 5 + pitch * Math.max(0, nCh - 1) + h + t + m, yLado = yBico - (h / (w / 2)) * (W / 2);
+    let s = `<path d="M${cx - W / 2},${top} L${cx + W / 2},${top} L${cx + W / 2},${nCh ? yLado : top + Hh} L${cx},${nCh ? yBico : top + Hh + 9} L${cx - W / 2},${nCh ? yLado : top + Hh} Z" fill="${baseFill}" stroke="${modo === 'ouro' ? '#6a7380' : '#a53d00'}" stroke-width="1"/>`;
     for (let i = 0; i < nCh; i++) {
       const y = top + 5 + i * pitch;
       const cor = d[i] === 'c' ? '#d7dce3' : (modo === 'ouro' ? 'url(#gGold)' : '#111');
