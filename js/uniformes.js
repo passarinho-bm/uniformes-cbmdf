@@ -117,7 +117,7 @@ window.UNIFORMES = {
       ['Acesso a estabelecimentos', 'no', 'Vedado, inclusive a permanência em estabelecimentos externos à OBM.'],
     ], notas: ['O uso isolado do 4º A fora da OBM só é permitido em instruções técnico-profissionais, atividade física militar, áreas de reabilitação (SCI) e prevenção aquática (p. 57, I).'] },
     codigo: '4º A', titulo: 'TFM', aba: 'TFM', cor: '#c8141e',
-    fotos: [{ src: 'assets/fotos/ref-4a-b.jpg', cap: 'Referência oficial — masculino (p. 56)', crop: 'c4' }, { src: 'assets/fotos/ref-4a-a.jpg', cap: 'Referência oficial — feminino (p. 56)', crop: 'c4' }],
+    fotos: [{ src: 'assets/fotos/ref-4a-b.jpg?v=2', cap: 'Referência oficial — masculino (p. 56)', crop: 'c4' }, { src: 'assets/fotos/ref-4a-a.jpg?v=2', cap: 'Referência oficial — feminino (p. 56)', crop: 'c4' }],
     ficha: [['Aquisição', 'Pelos bombeiros militares'], ['Posse', 'Obrigatória a todos os bombeiros militares'], ['Uso', 'Uso interno nas OBMs, durante o serviço operacional e instruções técnico-profissionais; também por todos na prática de treinamento físico militar.']],
     composicao: {
       M: ['Camiseta de malha vermelha, meia-manga ou manga comprida (2.1)', 'Bermuda vermelha (2.20)', 'Bermuda de malha preta (3.6)', 'Meias pretas de cano médio (ou cano alto dobradas) (3.11)', 'Tênis preto (2.25)', 'Gorro com pala vermelho — opcional (2.15)'],
