@@ -34,7 +34,7 @@ window.UNIFORMES = {
   '2a': {
     paineis: [
       { titulo: 'Disposição dos distintivos e insígnias no uniforme (2º A)', figs: [
-        { src: 'assets/fotos/fig-posicoes-2a.webp', cap: 'Posição de cada insígnia, brevê, plaqueta e distintivo na camisa e no bibico — figura do regulamento, p. 36.' },
+        { src: 'assets/fotos/fig-posicoes-2a.webp', larg: 80, cap: 'Posição de cada insígnia, brevê, plaqueta e distintivo na camisa e no bibico — figura do regulamento, p. 36.' },
       ] },
       { titulo: 'Modo correto de uso — figuras do regulamento', figs: [
         { src: 'assets/fotos/fig-lapela.webp', cap: 'Modo correto de uso da arma do quadro: na gola do 2º A (20 mm) e na lapela da túnica (30 mm) — figura do regulamento, p. 151.' },
