@@ -669,7 +669,7 @@ window.Draw = (function () {
     arma: [{ x: 352, y: 172, r: 42, k: 2.1 }, { x: 602, y: 172, r: -42, k: 2.1 }],
     plq: { x: 313, y: 379, k: 2.0 }, car: { x: 314, y: 497, k: 2.3 }, obm: { x: 633, y: 408, k: 1.9 },
     bp: { 1: { x: 313, y: 328, k: 2.1 }, 2: { x: 282, y: 262, k: 2.1 }, 3: { x: 637, y: 328, k: 2.1 }, 4: { x: 668, y: 266, k: 2.1 } },
-    ap: { x: 313, y: 172, k: 2.0 }, bar: { x: 634, y: 365, k: 2.08 },
+    ap: { x: 245, y: 220, k: 2.0 }, bar: { x: 634, y: 365, k: 2.08 },
     band: { x: 136, y: 228, r: 33, k: 1.65 }, emb: { x: 819, y: 228, r: -30, k: 1.65 },
     hat: { x: 1135, y: 540, k: 1 },
     vb: { geral: '0 0 1350 935', peito: '180 40 560 388', mangaD: '0 60 500 347', mangaE: '450 60 500 347', cobertura: '950 300 400 277' },
@@ -741,7 +741,9 @@ window.Draw = (function () {
     brevesAvisos(c, B);
     // aplique
     if (c.fn.id && c.eOf) {
-      g += hs('aplique', pl(G.ap, aplique(c.fn, 0, 0)), c.fn.nome);
+      // com elipse(s) de instrutor o brevê #2 sobe; o aplique sobe junto para não se sobrepor a ele
+      const subida = Math.max(0, G.bp[2].y - posBreve(G, B, 2).y);
+      g += hs('aplique', pl(Object.assign({}, G.ap, { y: G.ap.y - subida }), aplique(c.fn, 0, 0)), c.fn.nome);
       add(c, { key: 'aplique', nivel: 'opc', titulo: 'Aplique de comando e chefia', texto: `${c.fn.nome}: 90 mm acima da costura superior do bolso direito, durante o efetivo exercício da função.`, pag: 'p. 166–167', at: mkAt(G.ap, 22, 0) });
     }
     // barretas (somente)
