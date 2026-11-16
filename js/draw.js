@@ -604,7 +604,9 @@ window.Draw = (function () {
 
     // ---- aplique de comando
     if (c.fn.id && c.eOf) {
-      g += hs('aplique', pl(G.ap, aplique(c.fn, 0, 0)), c.fn.nome);
+      // com elipse(s) de instrutor o brevê #2 sobe; o aplique sobe junto para não se sobrepor a ele
+      const subida = Math.max(0, G.bp[2].y - posBreve(G, B, 2).y);
+      g += hs('aplique', pl(Object.assign({}, G.ap, { y: G.ap.y - subida }), aplique(c.fn, 0, 0)), c.fn.nome);
       add(c, { key: 'aplique', nivel: 'opc', titulo: 'Aplique de comando e chefia', texto: `${c.fn.nome}: usado apenas durante o efetivo exercício da função, 90 mm acima da costura superior do bolso direito (túnica feminina: 90 mm acima da tarjeta). Não cumulativo: usa-se o de maior precedência.`, pag: 'p. 166–167', at: mkAt(G.ap, G.mk.ap[0], G.mk.ap[1]) });
     } else if (c.fn.id && !c.eOf) {
       add(c, { key: 'aplique', nivel: 'alerta', titulo: 'Aplique de comando', texto: 'Apliques de comando e chefia são de uso do Oficial; sua graduação não os utiliza.', pag: 'p. 166', at: null });
