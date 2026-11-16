@@ -178,7 +178,7 @@
  <div class="box espec"><h3>Especificidades do regulamento</h3>${u.espec.map((e) => `<details><summary>${esc(e[0])}</summary><p>${esc(e[1])} <span class="pag">${esc(e[2])}</span></p></details>`).join('')}</div>
 </div>
 ${transitoHtml(u)}
-${(u.paineis || []).map((pn) => `<div class="box figs"><h3>${esc(pn.titulo)}</h3><div class="figs-grid">${pn.figs.map((f) => `<figure${f.sexo ? ` data-sexo="${f.sexo}"` : ''}${f.larg ? ` style="width:${f.larg}%"` : ''}><img src="${f.src}" alt="${esc(f.cap)}" loading="lazy"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('')}</div></div>`).join('')}</section>`;
+${(u.paineis || []).map((pn) => `<div class="box figs"><h3>${esc(pn.titulo)}</h3><div class="figs-grid">${pn.figs.map((f) => `<figure${f.sexo ? ` data-sexo="${f.sexo}"` : ''}${f.larg ? ` style="width:${f.larg}%;justify-self:center"` : ''}><img src="${f.src}" alt="${esc(f.cap)}" loading="lazy"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('')}</div></div>`).join('')}</section>`;
     }).join('');
     tabs.addEventListener('click', (e) => { const b = e.target.closest('button[data-k]'); if (b) abrir(b.dataset.k); });
     tabs.addEventListener('keydown', (e) => {
