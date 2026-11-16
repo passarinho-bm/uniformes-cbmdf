@@ -3,6 +3,7 @@ window.UNIFORMES = {
   '1b': {
     paineis: [{ titulo: 'Modo correto de uso — figuras do regulamento', figs: [
       { src: 'assets/fotos/fig-lapela.webp', cap: 'Modo correto de uso da arma do quadro na lapela (túnica, 30 mm) e na gola (passeio, 20 mm) — figura do regulamento, p. 151.' },
+      { src: 'assets/fotos/fig-saia.webp', sexo: 'F', cap: 'Comprimento da saia média (1º B e 2º A): na altura da linha da dobra posterior dos joelhos (correto); acima ou abaixo dessa linha é incorreto — figura do regulamento, p. 84.' },
       { src: 'assets/fotos/fig-gravata.webp', sexo: 'M', cap: 'Uso correto da gravata masculina vertical: com o nó aplicado, o comprimento deve terminar tangenciando a fivela do cinto (nem acima, nem cobrindo a fivela) — figura do regulamento, p. 114.' },
     ] }],
     transito: { grupo: '1º A, 1º B, 1º C e 1º G (túnicas)', pag: 'p. 185', linhas: [
