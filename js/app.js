@@ -177,7 +177,8 @@
  <div class="box comp"><h3>Composição <span class="sx"></span></h3><ul class="comp-list"></ul></div>
  <div class="box espec"><h3>Especificidades do regulamento</h3>${u.espec.map((e) => `<details><summary>${esc(e[0])}</summary><p>${esc(e[1])} <span class="pag">${esc(e[2])}</span></p></details>`).join('')}</div>
 </div>
-${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — figuras do regulamento</h3><div class="figs-grid">${u.figuras.map((f) => `<figure><img src="${f.src}" alt="${esc(f.cap)}" loading="lazy"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('')}</div></div>` : ''}</section>`;
+${transitoHtml(u)}
+${(u.paineis || []).map((pn) => `<div class="box figs"><h3>${esc(pn.titulo)}</h3><div class="figs-grid">${pn.figs.map((f) => `<figure${f.sexo ? ` data-sexo="${f.sexo}"` : ''}><img src="${f.src}" alt="${esc(f.cap)}" loading="lazy"><figcaption>${esc(f.cap)}</figcaption></figure>`).join('')}</div></div>`).join('')}</section>`;
     }).join('');
     tabs.addEventListener('click', (e) => { const b = e.target.closest('button[data-k]'); if (b) abrir(b.dataset.k); });
     tabs.addEventListener('keydown', (e) => {
@@ -216,6 +217,16 @@ ${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — 
         }
       }
     });
+  }
+  // painel de trânsito: tabela do Cap. 8 do regulamento (p. 183–187)
+  const TRANSITO_GERAL = 'Trânsito com uniforme é toda circulação fora dos limites da OBM: a pé em via pública, permanência em estabelecimentos, veículo particular, viatura, transporte público ou por aplicativo e motocicleta. O deslocamento entre residência e OBM é trânsito autorizado, respeitadas as restrições de cada uniforme. O Comandante-Geral pode restringir ou ampliar o trânsito de determinados uniformes por ato próprio (p. 184).';
+  function transitoHtml(u) {
+    const t = u.transito; if (!t) return '';
+    return `<div class="box transito"><h3>Regras de trânsito <span class="sx">— ${esc(t.grupo)}</span></h3>
+ <p class="tr-geral">${esc(TRANSITO_GERAL)}</p>
+ <ul class="tr-lista">${t.linhas.map((l) => `<li class="tr-${l[1]}"><span class="tr-ctx">${esc(l[0])}</span><span class="tr-st">${l[1] === 'ok' ? 'Autorizado' : 'Vedado'}</span><span class="tr-obs">${esc(l[2])}</span></li>`).join('')}</ul>
+ ${(t.notas || []).map((n) => `<p class="tr-nota">${esc(n)}</p>`).join('')}
+ <p class="pag">Fonte: ${esc(t.pag)} do regulamento.</p></div>`;
   }
   // zoom (roda do mouse / pinça / botões) e pan (arrastar) direto no viewBox do SVG
   function ligarZoom(k, p) {
@@ -362,6 +373,8 @@ ${(u.figuras || []).length ? `<div class="box figs"><h3>Modo correto de uso — 
     const sx = st.sexo === 'F' ? 'F' : 'M';
     $('.sx', p).textContent = '— versão ' + (sx === 'F' ? 'feminina' : 'masculina');
     $('.comp-list', p).innerHTML = U[k].composicao[sx].map((x) => `<li>${esc(x)}</li>`).join('');
+    $$('.figs figure[data-sexo]', p).forEach((f) => { f.hidden = f.dataset.sexo !== sx; });
+    $$('.figs', p).forEach((b) => { b.hidden = !$$('figure', b).some((f) => !f.hidden); });
   }
 
   let raf;

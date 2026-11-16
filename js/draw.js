@@ -500,7 +500,7 @@ window.Draw = (function () {
       plq: { x: 440, y: 368, k: 1.93 }, car: { x: 443, y: 475, k: 2.2 }, obm: { x: 677, y: 435, k: 2.0 },
       bp: { 1: { x: 439, y: 327, k: 2.0 }, 2: { x: 405, y: 275, k: 2.0 }, 3: { x: 684, y: 357, k: 2.0 }, 4: { x: 717, y: 276, k: 2.0 } },
       ap: { x: 371, y: 231, k: 2.0 }, bar: { x: 683, y: 378, k: 2.1 }, med: { x: 683, y: 436, k: 1.8 }, com: { x: 559, y: 40, k: 1.8 },
-      band: { x: 215, y: 250, r: 12, k: 1.7 }, emb: { x: 890, y: 241, r: -12, k: 1.7 }, caeo: { x: 133, y: 661, r: 13, k: 1.9 },
+      band: { x: 216, y: 250, r: 30, k: 1.7 }, emb: { x: 890, y: 241, r: -30, k: 1.7 }, caeo: { x: 133, y: 661, r: 13, k: 1.9 },
       hat: { x: 1290, y: 200, k: 1.7 },
       mk: { plat: [0, -52], arma: [0, -36], plq: [-60, 0], car: [30, 0], obm: [26, 90], bp: [-52, 0], ap: [28, 0], med: [60, -60], bar: [66, -18], com: [40, 60], band: [0, 44], emb: [0, 44], caeo: [28, 0], div: [0, -14] },
       vb: { geral: '0 0 1419 950', peito: '300 20 560 375', mangaD: '0 170 780 522', mangaE: '640 170 780 522', cobertura: '1150 40 270 181' },
@@ -809,12 +809,12 @@ window.Draw = (function () {
   const KP = 1.34;
   const GEO_P = {
     w: 1030, h: 800, aspect: '1330 / 800',
-    luva: [{ x: 360, y: 125, r: 72, k: KP }, { x: 659, y: 125, r: -72, k: KP }],
-    arma: { x: 507, y: 244, k: KP }, // base da arma na mesma linha da base dos cadarços
+    luva: [{ x: 360, y: 126, r: 72, k: KP }, { x: 659, y: 125, r: -72, k: KP }],
+    arma: { x: 510, y: 244, k: KP }, // base da arma na mesma linha da base dos cadarços
     cadI: { x: 416, y: 251, k: KP }, cadL: { x: 601, y: 251, k: KP },
-    bp: { 1: { x: 412, y: 214, k: KP }, 2: { x: 387, y: 170, k: KP }, 3: { x: 610, y: 214, k: KP }, 4: { x: 637, y: 170, k: KP } },
-    manD: { x: 250, y: 180, r: 34, k: 0.8 }, manE: { x: 754, y: 180, r: -34, k: 0.8 },
-    band: { x: 235, y: 216, r: 34, k: KP * 0.9 }, emb: { x: 776, y: 212, r: -34, k: KP * 0.9 },
+    bp: { 1: { x: 420, y: 214, k: KP }, 2: { x: 392, y: 170, k: KP }, 3: { x: 600, y: 214, k: KP }, 4: { x: 623, y: 170, k: KP } },
+    manD: { x: 283, y: 165, r: 53, k: 0.8 }, manE: { x: 750, y: 169, r: -57, k: 0.8 },
+    band: { x: 250, y: 190, r: 53, k: KP * 0.9 }, emb: { x: 785, y: 190, r: -53, k: KP * 0.9 },
     div: [{ x: 190, y: 320, r: 34, k: KP * 0.8 }, { x: 824, y: 320, r: -34, k: KP * 0.8 }],
     hat: { x: 1180, y: 180, k: KP },
     vb: { geral: '0 0 1330 800', peito: '170 40 680 409', mangaD: '0 90 560 337', mangaE: '770 90 560 337', cobertura: '1050 40 280 168' },
@@ -884,7 +884,7 @@ window.Draw = (function () {
     const hatInner = (usaBoina ? boina(c, 645, 150) : gorroPala(c, 645, 150, COR.laranja, COR.laranjaEsc)) + chaoLabel(usaBoina ? 'Boina azul-escuro' : 'Gorro com pala laranja', 645, usaBoina ? 215 : 252);
     g += hs('cobertura', `<g transform="translate(${G.hat.x},${G.hat.y}) scale(${G.hat.k}) translate(-645,-150)">${hatInner}</g>`, 'Cobertura');
     add(c, { key: 'cobertura', nivel: 'obrig', titulo: usaBoina ? 'Boina azul-escuro (' + st.obm.toUpperCase() + ')' : 'Gorro com pala laranja', texto: usaBoina ? 'Sua lotação (COESP, GPCIU, GBS ou GAEPH) usa boina azul-escuro no lugar do gorro com pala, com o distintivo circular do símbolo do CBMDF no lado direito.' : `Tropa em geral: gorro com pala laranja, com brasão bordado conforme o posto/graduação${c.superior ? ' e ramos de carvalho dourados na pala (oficiais superiores)' : ''}. Obrigatória em deslocamento a pé; dispensável no interior das unidades, em veículo e em socorro (com capacete).`, pag: 'p. 45 (VIII), 86–87, 91–92', at: [G.hat.x, 80] });
-    add(c, { key: 'gola', nivel: 'info', titulo: 'Gola: dobrada ou elevada', texto: 'A gola do 3º A pode ser usada dobrada ou elevada, a critério do militar. Com a tropa em forma o uso é padronizado: preferencialmente dobrada em ambientes fechados e elevada em ambientes abertos, como proteção contra o sol. Veja a figura abaixo.', pag: 'p. 46 (XIV), 47', at: [507, 70] });
+    add(c, { key: 'gola', nivel: 'info', titulo: 'Gola: dobrada ou elevada', texto: 'A gola do uniforme 3º A (Prontidão) poderá ser utilizada dobrada ou elevada, a critério do militar. Quando a tropa estiver em forma, seu emprego deverá ser padronizado, utilizando-se preferencialmente a gola dobrada em ambientes fechados e elevada em ambientes abertos, como medida de proteção contra a exposição solar. Veja a figura no final da página.', pag: 'p. 46 (XIV), 47', at: [507, 70] });
     add(c, { key: 'bermuda', nivel: 'info', titulo: 'Bermuda de malha preta', texto: 'No serviço operacional o 3º A é usado com a bermuda de malha preta por baixo, para trocar de uniforme/EPI e agir rápido em meio aquático.', pag: 'p. 46 (XVII)', at: null });
     add(c, { key: 'calca', nivel: 'info', titulo: 'Calça e coturno', texto: 'A barra da calça é ajustada por velcro na região tibial, acima do coturno; não se usa a calça por fora do coturno (exceto campo/buscas, a critério do comandante).', pag: 'p. 44 (VII)', at: null });
     const r = finalizar(c, g, Object.assign({}, VB, G.vb, { cobertura: hatVB({ x: G.hat.x, y: G.hat.y + 20 * G.hat.k }, G.hat.k) }));

@@ -1,7 +1,18 @@
 /* Metadados de cada uniforme, resumidos do regulamento (com páginas do PDF). */
 window.UNIFORMES = {
   '1b': {
-    figuras: [{ src: 'assets/fotos/fig-lapela.jpg', cap: 'Modo correto de uso da arma do quadro na lapela (túnica, 30 mm) e na gola (passeio, 20 mm) — figura do regulamento, p. 151.' }],
+    paineis: [{ titulo: 'Modo correto de uso — figuras do regulamento', figs: [
+      { src: 'assets/fotos/fig-lapela.webp', cap: 'Modo correto de uso da arma do quadro na lapela (túnica, 30 mm) e na gola (passeio, 20 mm) — figura do regulamento, p. 151.' },
+      { src: 'assets/fotos/fig-gravata.webp', sexo: 'M', cap: 'Uso correto da gravata masculina vertical: com o nó aplicado, o comprimento deve terminar tangenciando a fivela do cinto (nem acima, nem cobrindo a fivela) — figura do regulamento, p. 114.' },
+    ] }],
+    transito: { grupo: '1º A, 1º B, 1º C e 1º G (túnicas)', pag: 'p. 185', linhas: [
+      ['A pé ou em via pública', 'ok', 'Uniforme completo.'],
+      ['Transporte público', 'ok', 'Uniforme completo.'],
+      ['Veículo particular ou por aplicativo', 'ok', 'Cobertura e túnica podem ser removidas enquanto no interior do veículo.'],
+      ['Motocicleta', 'ok', 'Cobertura e túnica são substituídas por capacete e jaqueta de motociclista durante a condução.'],
+      ['Viaturas', 'ok', 'Cobertura e túnica podem ser removidas enquanto no interior do veículo.'],
+      ['Acesso a estabelecimentos', 'ok', 'Cobertura pode ser removida em locais cobertos. É vedada a remoção da túnica.'],
+    ], notas: ['Sem túnica: só em deslocamento no interior de viatura ou veículo particular, ou no interior de OBM fora de formatura ou solenidade (p. 16, VII). É vedado sem a túnica em bailes ou cerimônias de caráter ou representação militar (p. 16, VIII).'] },
     codigo: '1º B', titulo: 'Túnica cinza-escuro', aba: 'Túnica Cinza', cor: '#454d59',
     fotos: [{ src: 'assets/fotos/ref-1b.jpg', cap: 'Referência oficial — versões masculina e feminina (p. 15)', crop: 'c1b' }],
     ficha: [['Aquisição', 'Pelos bombeiros militares'], ['Posse', 'Obrigatória para todos os bombeiros e bombeiras militares'], ['Uso', 'Solenidades oficiais, recepções de gala, reuniões ou cerimônias em que se exija passeio completo, casaca, fraque ou smoking (e longo aos civis), ou reunião social solene de caráter particular.']],
@@ -21,7 +32,24 @@ window.UNIFORMES = {
     ],
   },
   '2a': {
-    figuras: [{ src: 'assets/fotos/fig-lapela.jpg', cap: 'Modo correto de uso da arma do quadro: na gola do 2º A (20 mm) e na lapela da túnica (30 mm) — figura do regulamento, p. 151.' }],
+    paineis: [
+      { titulo: 'Disposição dos distintivos e insígnias no uniforme (2º A)', figs: [
+        { src: 'assets/fotos/fig-posicoes-2a.webp', cap: 'Posição de cada insígnia, brevê, plaqueta e distintivo na camisa e no bibico — figura do regulamento, p. 36.' },
+      ] },
+      { titulo: 'Modo correto de uso — figuras do regulamento', figs: [
+        { src: 'assets/fotos/fig-lapela.webp', cap: 'Modo correto de uso da arma do quadro: na gola do 2º A (20 mm) e na lapela da túnica (30 mm) — figura do regulamento, p. 151.' },
+        { src: 'assets/fotos/fig-saia.webp', sexo: 'F', cap: 'Comprimento da saia média: na altura da linha da dobra posterior dos joelhos (correto); acima ou abaixo dessa linha é incorreto — figura do regulamento, p. 84.' },
+        { src: 'assets/fotos/fig-boina.webp', cap: 'Uso correto da boina azul-escuro (opcional no 2º A, em substituição ao bibico): caimento lateral para o lado esquerdo, peça firme, sem folgas ou deformações — figura do regulamento, p. 93.' },
+      ] },
+    ],
+    transito: { grupo: '2º A, 2º B, 2º C e 2º D (passeio)', pag: 'p. 186', linhas: [
+      ['A pé ou em via pública', 'ok', 'Uniforme completo.'],
+      ['Transporte público', 'ok', 'Uniforme completo.'],
+      ['Veículo particular ou por aplicativo', 'ok', 'Cobertura pode ser removida enquanto no interior do veículo.'],
+      ['Motocicleta', 'ok', 'Cobertura é substituída por capacete e jaqueta de motociclista durante a condução.'],
+      ['Viaturas', 'ok', 'Cobertura pode ser removida enquanto no interior do veículo.'],
+      ['Acesso a estabelecimentos', 'ok', 'Cobertura pode ser removida enquanto estiver em locais cobertos.'],
+    ] },
     codigo: '2º A', titulo: 'Passeio', aba: 'Segundo A', cor: '#c9a47f',
     fotos: [{ src: 'assets/fotos/ref-2a.jpg', cap: 'Referência oficial — versões masculina e feminina (p. 33)', crop: 'c2a' }],
     ficha: [['Aquisição', 'Pelos bombeiros militares'], ['Posse', 'Obrigatória para todos os bombeiros e bombeiras militares do CBMDF'], ['Uso', 'Atividades administrativas, apresentações individuais e coletivas, solenidades e atividades sociais em que se exijam, aos civis, os trajes passeio, esporte fino ou esporte.']],
@@ -40,7 +68,23 @@ window.UNIFORMES = {
     ],
   },
   '3a': {
-    figuras: [{ src: 'assets/fotos/fig-gola.jpg', cap: 'Gola elevada (à esquerda) e gola dobrada (à direita) — figura do regulamento, p. 47. Em forma: dobrada em ambientes fechados e elevada em ambientes abertos.' }, { src: 'assets/fotos/fig-breves-3a.jpg', cap: 'Posições #1 a #4 dos brevês, manicacas e arma na carcela — figura do regulamento, p. 160.' }],
+    paineis: [
+      { titulo: 'Disposição dos distintivos e insígnias no uniforme (3º A)', figs: [
+        { src: 'assets/fotos/fig-posicoes-3a.webp', cap: 'Manicacas, brevês #1 a #4 e insígnia de quadro na gandola — figura do regulamento, p. 48.' },
+      ] },
+      { titulo: 'Modo correto de uso — figuras do regulamento', figs: [
+        { src: 'assets/fotos/fig-calca-3a.webp', cap: 'Ajuste da barra da calça (1º posicionar na região tibial, acima da boca do coturno; 2º fixar o velcro; 3º dobrar o excedente por sobre o velcro). É vedada a calça por sobre o coturno, salvo em atividades operacionais de campo — figura do regulamento, p. 75.' },
+        { src: 'assets/fotos/fig-gola.jpg', cap: 'Gola elevada (à esquerda) e gola dobrada (à direita) — figura do regulamento, p. 47. A gola pode ser usada dobrada ou elevada, a critério do militar; com a tropa em forma o emprego deve ser padronizado, preferencialmente dobrada em ambientes fechados e elevada em ambientes abertos, como medida de proteção contra a exposição solar (p. 46, XIV).' },
+      ] },
+    ],
+    transito: { grupo: '3º A (prontidão e gandoleta)', pag: 'p. 186 e p. 44 (II)', linhas: [
+      ['A pé ou em via pública', 'ok', 'Uniforme completo.'],
+      ['Transporte público', 'ok', 'Uniforme completo.'],
+      ['Veículo particular ou por aplicativo', 'ok', 'Cobertura e gandola podem ser removidas enquanto no interior do veículo; devem ser recolocadas assim que houver o desembarque.'],
+      ['Motocicleta', 'ok', 'Cobertura e gandola são substituídas por capacete e jaqueta de motociclista durante a condução.'],
+      ['Viaturas', 'ok', 'Cobertura e gandola podem ser removidas enquanto no interior do veículo.'],
+      ['Acesso a estabelecimentos', 'ok', 'Cobertura pode ser removida enquanto estiver em locais cobertos.'],
+    ], notas: ['3º A com jaleco: trânsito vedado; o militar deve ter a gandola consigo, seguindo o previsto para o 3º A (Prontidão) (p. 186).'] },
     codigo: '3º A', titulo: 'Prontidão', aba: 'Prontidão', cor: '#ff6a13',
     fotos: [{ src: 'assets/fotos/ref-3a-a.jpg', cap: 'Referência oficial — masculino (p. 43)', crop: 'c3' }, { src: 'assets/fotos/ref-3a-b.jpg', cap: 'Referência oficial — feminino (p. 43)', crop: 'c3' }],
     ficha: [['Aquisição', 'Pelos bombeiros militares'], ['Posse', 'Obrigatória a todos os bombeiros e bombeiras militares'], ['Uso', 'Solenidades, representações, instruções, serviços operacionais, missões e expediente. É obrigatório durante o serviço para o qual o militar está escalado.']],
@@ -50,10 +94,10 @@ window.UNIFORMES = {
     },
     espec: [
       ['Emprego', 'Em atividades administrativas, dentro da unidade, é facultado o uso sem a gandola. Na função de adjunto, guarda, sentinela, rondante e afins, e em missão operacional/atividade externa, o uniforme completo é obrigatório.', 'p. 44 (I)'],
-      ['Trânsito', 'Em veículo particular ou por aplicativo pode-se retirar o gorro e a gandola, recolocando-os ao desembarcar.', 'p. 44 (II)'],
       ['Ajuste da calça', 'Barra ajustada por velcro na região tibial, acima do coturno. Não se usa a calça por fora do coturno, salvo campo, buscas em áreas remotas ou situações de proteção adicional, a critério do comandante.', 'p. 44–45 (VII)'],
       ['Cobertura', 'Obrigatória em deslocamentos a pé; dispensável no interior das unidades, em veículo, em locais cobertos e no socorro (onde se usa o capacete).', 'p. 45 (VIII)'],
-      ['Manga e gola', 'A manga pode ser dobrada ou recolhida até o cotovelo (nunca em ações de socorro nem com camiseta manga comprida). A gola pode ser dobrada ou elevada; em forma, padronizar (dobrada em ambiente fechado, elevada em aberto).', 'p. 46 (XIII, XIV)'],
+      ['Gola', 'A gola do uniforme 3º A (Prontidão) poderá ser utilizada dobrada ou elevada, a critério do militar. Quando a tropa estiver em forma, seu emprego deverá ser padronizado, utilizando-se preferencialmente a gola dobrada em ambientes fechados e elevada em ambientes abertos, como medida de proteção contra a exposição solar.', 'p. 46 (XIV)'],
+      ['Dobra das mangas', 'Em serviço operacional ou administrativo, a manga poderá, opcionalmente, ser usada dobrada ou recolhida até a altura do cotovelo e ajustada no velcro, à exceção das ações de socorro, ocasião em que as mangas deverão estar desdobradas. Com a camiseta de malha vermelha de manga comprida, as mangas da gandola não poderão ser dobradas ou recolhidas.', 'p. 46 (XIII)'],
       ['Motocicleta', 'Permitida a jaqueta de motociclista no deslocamento em motocicleta particular.', 'p. 45 (X)'],
       ['Acessórios', 'Com autorização do Comandante-Geral: coturno com cadarço branco, suspensório, cinto N.A. vermelho ou tático preto, colete preto, braçal e coldre. Com espada: cinto N.A. vermelho, fiador, talim e luvas de pelica pretas.', 'p. 45–46 (XI, XV)'],
       ['Japona e serviço operacional', 'Japona laranja de uso exclusivo com o 3º A. No serviço operacional, bermuda de malha preta por baixo.', 'p. 46 (XVI, XVII)'],
@@ -61,7 +105,17 @@ window.UNIFORMES = {
     ],
   },
   '4a': {
-    figuras: [{ src: 'assets/fotos/fig-meia.jpg', cap: 'Uso da meia com tênis: a meia de cano alto deve ser dobrada, bem ajustada à perna; é vedado usá-la frouxa ou totalmente estendida — figura do regulamento, p. 117.' }],
+    paineis: [{ titulo: 'Modo correto de uso — figuras do regulamento', figs: [
+      { src: 'assets/fotos/fig-meia.jpg', cap: 'Uso da meia com tênis: a meia de cano alto deve ser dobrada, bem ajustada à perna; é vedado usá-la frouxa ou totalmente estendida — figura do regulamento, p. 117.' },
+    ] }],
+    transito: { grupo: '4º A e 4º C (TFM)', pag: 'p. 187 e p. 57 (III)', linhas: [
+      ['A pé ou em via pública', 'no', 'Vedado.'],
+      ['Transporte público', 'no', 'Vedado.'],
+      ['Veículo particular ou por aplicativo', 'ok', 'Autorizado.'],
+      ['Motocicleta', 'no', 'Vedado.'],
+      ['Viaturas', 'ok', 'Autorizado.'],
+      ['Acesso a estabelecimentos', 'no', 'Vedado, inclusive a permanência em estabelecimentos externos à OBM.'],
+    ], notas: ['O uso isolado do 4º A fora da OBM só é permitido em instruções técnico-profissionais, atividade física militar, áreas de reabilitação (SCI) e prevenção aquática (p. 57, I).'] },
     codigo: '4º A', titulo: 'TFM', aba: 'TFM', cor: '#c8141e',
     fotos: [{ src: 'assets/fotos/ref-4a-b.jpg', cap: 'Referência oficial — masculino (p. 56)', crop: 'c4' }, { src: 'assets/fotos/ref-4a-a.jpg', cap: 'Referência oficial — feminino (p. 56)', crop: 'c4' }],
     ficha: [['Aquisição', 'Pelos bombeiros militares'], ['Posse', 'Obrigatória a todos os bombeiros militares'], ['Uso', 'Uso interno nas OBMs, durante o serviço operacional e instruções técnico-profissionais; também por todos na prática de treinamento físico militar.']],
@@ -72,7 +126,6 @@ window.UNIFORMES = {
     espec: [
       ['Serviço operacional', 'Preconizado para os períodos aquartelados e como base sob os EPIs. O uso isolado é restrito ao interior da OBM, exceto: instruções técnico-profissionais, atividade física militar, áreas de reabilitação (SCI) e prevenção aquática.', 'p. 57 (I)'],
       ['Atividades aquáticas', 'Podem-se somar sandálias pretas, sunga (masc.) ou maiô preto com bermuda preta/short embutido e touca (fem.). Em prevenção aquática a camiseta pode ser substituída por EPI.', 'p. 57 (II)'],
-      ['Trânsito', 'Permitido em viatura, veículo particular ou aplicativo. Vedado em transporte público, motocicleta, a pé em via pública e em estabelecimentos externos à OBM.', 'p. 57 (III)'],
       ['Especializadas', 'Camisetas de Grupamentos Especializados podem ter brasão no peito (190 mm), e na manga longa a especialidade (esq.) e “INSTRUTOR” (dir.).', 'p. 57 (IV), 67–69'],
       ['Abrigo', 'É admitido o abrigo do agasalho (2.19) por sobre o uniforme para proteção térmica.', 'p. 57 (V)'],
       ['Camiseta', 'Usada por fora da bermuda vermelha. Inscrição “BOMBEIRO MILITAR DISTRITO FEDERAL” em silk screen branco nas costas.', 'p. 65'],
